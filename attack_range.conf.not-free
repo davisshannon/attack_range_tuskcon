@@ -8,7 +8,7 @@ log_level = INFO
 # Sets the log level for the logging
 # Possible values: INFO, ERROR
 
-attack_range_password = Surg315C00l!
+attack_range_password = TuskCon2022!
 # Master password for all administrative accounts
 # default Surg315C00l!
 
@@ -44,7 +44,7 @@ tf_backend_container = tfstate
 # only needed when you specify a remote backend
 
 [range_settings]
-key_name = shannon-surge
+key_name = YOURKEYNAMEINAWSENTERHERE
 # please configure your ssh key name on aws
 # for instructions visit: https://github.com/splunk/attack_range/wiki/Ubuntu-18.04-Installation
 
@@ -53,7 +53,7 @@ ip_whitelist = 0.0.0.0/0
 # This allow comma-separated blocks
 # ip_whitelist = 0.0.0.0/0,35.153.82.195/32
 
-private_key_path = ~/.ssh/shannon-surge
+private_key_path = ~/.ssh/YOURPRIVATEENTERKEYHERE
 # Specify the path to your private SSH key
 # required for both AWS and Azure
 
@@ -258,7 +258,7 @@ windows_domain_controller = 1
 # enable a windows domain controller
 # possible values: 1, 0
 
-windows_server = 10
+windows_server = 1
 # enable a windows server
 # possible values: 1, 0
 
@@ -266,7 +266,7 @@ kali_machine = 0
 # enable a kali linux machine
 # possible values: 1, 0
 
-windows_client = 1
+windows_client = 0
 # enable a windows client
 # possible values: 1, 0
 
@@ -347,14 +347,14 @@ windows_client_private_ip = 10.0.1.17
 # specify the windows client private ip
 # should be in subnet: 10.0.1.0/24
 
-windows_client_os = Surge-Windows-10
+windows_client_os = Windows-10
 # specify the ami name
 
-windows_client_join_domain = 1
+windows_client_join_domain = 0
 # specify if the windows client should join the windows domain
 # possible values: 1, 0
 
-windows_client_zeek_capture = 1
+windows_client_zeek_capture = 0
 #specify if you want to capture wire data from the Windows client
 # possible values: 1, 0
 
