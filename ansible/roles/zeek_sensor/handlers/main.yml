@@ -1,0 +1,3 @@
+- name: restart suricata
+  become: true
+  command:  "systemctl restart suricata"

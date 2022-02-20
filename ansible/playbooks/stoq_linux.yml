@@ -1,0 +1,8 @@
+- hosts: all
+  gather_facts: False
+  become: true
+  vars:
+    hostname: stoqlinux
+  roles:
+    - linux_common
+    - stoq_linux

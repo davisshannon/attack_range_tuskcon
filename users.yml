@@ -1,0 +1,56 @@
+users:
+
+  - name: "shannon"
+    email: "shannon@splunk.com"
+    ip: "103.152.126.0/23"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwwD45s6L2SvKP56Y+j4JZesrkx8+WHCpWlUVp/k1KEQWXh2K/HmvlX8WTYFV0RAw+CTlCvurRaxJq7qsdp+PDGSgZcjiYZp+drsf7woKxM1gBaxzBYKHINKRsU9Mu7/1O75DKlq/dmYa/y9Z9d875+vEzuMTO70CzKPk3cflY0FbIXDiGz9fGVETxHEtkrL67ewt3t0GxUm74xGSgjM3dGodrdiICGHiQgrCrDYNxEFEKdqNU7mkTV9b9B9bTmMmeOH4/THIrR8ti8+OLr73pUXsQbzMsnXPYpjmRXqPC2yWdX4B+qCslImkMVZtntei5Ekn/fXU50DW/FuhT8SBGQ/GMCWfxXDQPH5YTxA8nqi8amTobpUk3V/iPMBXgH7v81rguKSHtGL1x9jfcSvmnASEcCXoQm4JD3bZZUUCMuoS3F8MAWdpYcB/MdApF4T4TQ0STMjd9n3suHkUjz0hC9h5pzdg1VgxSD04XfLdJfTWHBaoUMxK95pHGNVYLzSf2fBM8WaKOm1/zvZ0sVHQFSmbDDLDbmWz+8vYcNnw+DGLXhZvq+T/VLznxazttu1B2nPT7F+dLgqH5/V6s+nRFXskNsyLRstGxMT8+7cAbPRzG/LPS2Gg9cYqoYmq3oOb6OexQBsxWv9iqE8lHdErqiBrAXDwPXlyKIIgO6DwDAw== shannon-cyberforge"
+
+  - name: "marcus"
+    email: "mlaferrera@splunk.com"
+    ip: "97.70.235.55/32"
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII0FhWNBZEzmBdA5NGhtHenBGFIhzFH8f+bjq3RTCEkM mal"
+
+  - name: "drew"
+    email: "andrewc@splunk.com"
+    ip: "24.113.72.148/32"
+    key: "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBJ3nxzTZeRGUewiVFStRT8mX2o6P6/gW2WehUUGmu+WVhVmIZhT+89oQ79itCQwzW39wkklGDyn/qjzOHhI/bu83OkQBIgq9rx+8drvqz7whkFzoIJrY9umf4hAPzV/S2w== SSH Key"
+
+  - name: "tamara"
+    email: "tchacon@splunk.com"
+    ip: "68.131.114.238/32"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDfqkabrPQdngPpZR7Uo2cHrJl+yQIlCcy7QMAqXLvjdM0A/LyDQLYfRCdfK+Y8XBU9fH9Qmdjq4iQ40Y26pIRnqbOIixsU+Z/5KTMXLDHs1eUvmsM8j6FStAV44wahrMEo33q/DpQRXLlsu/1v+XPRQW03wKdVzQNNnaj90S8KToh+G/8Ul3iUvIMtNZk8lKFHLFpV8LIYZPke1UrrjU3/1QdirU3UuDFMcS/iWmt3ARe5bW7a0w6j1oSpLfsgJy1qGqBUCfDi0QkhD5fBtBRgGy+7keLD7bjlNnQPtZpVLGIe+zPD871wBtKF3oMlDI7Vmf6vuIUWdkkIvtWIbu2bLtWZkVLJs/MD29LXTL0LoxnWeSxR6qYHWoExjKlx+ooRuH1806Y6ClvbtofMkYL26Ku0+Aw49VHRIVYliIm6TyTt+eeZsOSV4lFF7KlULivLcbew/0LnbTssfBv7zJWVVc7GK5rm/pCmT8zzY/tApqAKABHTxSRy0oOnrOJzs0c= tchacon@C02CL31XMD6M"
+
+  - name: "dave"
+    email: "dherrald@splunk.com"
+    ip: "107.2.253.40/32"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7VOFL1wiPhTEylN9UuGPmth6hhPsNLJQydxZjmKUmR8su39Z8Fm+yoOGXYDTQZ0nnnPZy5y0GfC0my2OooVOnEK1fsjlvV6e4z7Ef6qw//Us9exRvTI8eg3ir5q50opfT3QI4V7eg5WlAdsZtMOk4vkYam3FK1I4Dlu2H+ZYws/7xUfBBB2HOI21NZkXYzR7aoMJ2ssiZgjKrPHVI6M9QcMqnJwqZn/qm6JhLATXtSxIm6Kumhq/tyMFBCgXDYJBzBqyxtfdu3IxdCggDsMvLpVxwFPRaT4SYog1X4rGydTNCGgNfdwwdLg6EBIkCMPq1SBD/HRohHaFjSI1TG+x/ dave-cyberforge"
+
+  - name: "john"
+    email: "jstoner@splunk.com"
+    ip: "70.18.230.252/32"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDP4SUpPo1vYZHeO5JbCbNgvm2QcunlxvY7FD42OWTUjLd/VlBKVouOD9LhWY2Y6e1y8zJ2LX4498Gewysx/1qDfX/qrPMuqQbEP2lBQ6MnbpSLpVq0Kjo+FJr6Xv4/b7Fr+NmqGn9UcNOCFJ8NNowUmZfRKxPw+C05/1VTe6XhGcSEniJB//gHvL+VyNU7fnFCRnOViNEggrPUQVvUsETRb3M+zK0xWbgKcdnfP/GztOhnnOWhEksqUKu7OMTX8u0xohKaujmJB0WkMZnTPyZyL9kVMw4almgPk7QXn4xtoQP/drqKzBtOVmw//UUQ0gWIQ6CvsuAuWI4sWdtu9fxr/9bipoe6/SEQfV1GYkG63t7Chf907XE5adI8t8OjU7PkZgPwbVmSXOXBtcU798wG7x+YkH1am0Dpzke7YcRjOybN2O76sZDAKfNXxwwFDHuoI1C98+AttG+KVLyoSGPWbjQrUH17AFf1/l28t4Ckk01KGZN0cWB8d1C9BnHYCRs= jstoner@dark_knight"
+
+  - name: "kelcie"
+    email: "kbourne@splunk.com"
+    ip: "159.196.246.145/32"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDhgdWj2Njs1QUS2zqNG+BvWPhmB8FjaeIziZuB+W8rM2j7CwmOwCnE7bXtSSp3644a4q44ph8QF/ER7zUUrs9qvpIVBNu27k7Z2TIGnwno4KsgwHLrHAxntuISrxF6wQ9j/oR3SIEaLFJVhQ6Fnacf5kS+eb5ylx9ASJbtBRCBhCU9Dhy6N//2fmSgkhSXKzac7Ar4zJ/PqQ0Vvx1KaCyBgZA9KbpK/n01bP95Kub3SPE+zUI+HTGU3dGl451ZcjXjZ+DYGyqRR+uTzDduG+rgHsMebJqizN+bMyuuL64PSRQjVmdRe01VJSDkWEICxQI2doGFZUuzCe5mg2LRgkXAuafhvhzbNbCXsrxmamSJy+0mGaV17LqoSlBJR+oBc1J59N2qdvgvT2WeLpdUzC8nj0/sGcCOJpKOufbkYA63wmqk8mepVm3dclukSC9WJtL/jSJ7WRIQnnMAneup5HNzUZU8h8caaUpLBZ4UCTHx67ysy7aO43zh0Lrmy7hhA00= kelcie-surge"
+
+  - name: "johan"
+    email: "jbjerke@splunk.com"
+    ip: "90.129.200.72/32"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCju/baymkzS0uUsRxjCasN1iOnbaL8bzW5q13lv/e2s8QTzYyR73vrvn1SMPqNl4sH/DpI8ak4Dl/iB6WbP7wRUQSWELQraDUfz6Yffv/0OLwZ9LXHaixpdGhIBClhAMg0MvheERDUsgyiI2K9qrAiG6Bcttg3wSRQMsfIa6lkmW+F0fm/hHKXejRHf6eDtU1xbCGdHZLTUPM0lSHP5UM0Ks9NzPlKYY0VNCNnlF+jmZWpMFcAN8OlYT+vaIfToSSiXZKICCOi75oE1wKlVkRISLL1bvpejSDnYFPl+/NRXsTSWj8SXfNckteDM5ab9kVmJH/4kqO1Ivhgqmf4RMKBuLhQPWfcnOPihjLBbLSCI6384Y//S/WmEkXTC2wuq3uWs0pMg8wKspqIP25Riwa0OaioAvikSoE8PFucDdduIZe3UhpwaOabsE/ak1eCltBENNfMKAdLWaV71IdBuJ+CrBLNH3AFTiR3MUQZdtMUhm2kklgefAuBWAeuuIPjw/0= jbjerke@C02ZV15JLVDN"
+
+  - name: "tom"
+    email: "tsmit@splunk.com"
+    ip: "74.65.131.192/32"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCxyoUUbiIwnAU4q6cj11e3BWTa6THtPR4t4BLqtXR+GW4z4LPf1ZYK1W7JjE7hZuw59aZvm16bX+NOY2cH6w4V3kQRwQ9SM92QcnY3U6LMTV52B64qghhdxTOhqoUKuo8NjLEx1lncBHJPDW2O4bSMR0pUnNEQkNcwhTiRQBc65GWZX9He3b0NlY9zCiHN+WGGbZ5ngV3vlOKRpgFl+LlZzolqhTzb5fcszJAxSEDfZKyfDEjQPHF9E1q5VDR33OZbFNP573sELhn0K28R7lxgfvZE91wTdatLKWljzelX8l8tJeiuZC4zCUbsN+LCVauojU6MRPMOMP/v6k5RDGvpH0p3rpXOOJCj+WG87cGGWLxFJqrn2kE5YasTGbl/zQGxz5PTatMP3s11nzhQTLENn8bhKKDAffCqxU6TuJS1JSQCvNiAnTK1JMSvTO36YMGzJPRy7BBjsWUYTro+XHFQm7cCBycsNRL7gIrMaW9f0GKqgCxwEd+fPiLChdLvFNs= tsmit@smittypro.lan"
+
+  - name: "lily"
+    email: "lily@splunk.com"
+    ip: "24.9.92.39/32"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDcw+6QmjJ/oydneVA8IxL2AISvvoRpEu+CJv0i0bde1yzJ3KxjE1TQRU5DYgMDVyvTW6qI86FJUtxnHNmooxdpyunviwadQTv/Bpb3WBdGyAsw2xWt4+erstQS9vCGpFf6FNzd2TRd+7u7KtHcI5pqCJcQ/xRH3oNL796k02Ufzf9MrMIJhzZPQeCWl57qHNqLI29Z0JhUJYulU34gd/iN95xEdUH0dEYFcdAvtc55GnjOTlVV4aTeltrOyQR6lLcQeMINfTHD64FZ6cjN1zVrmd73kZdgYDyiIue/xL40Vgqjn/IO+QAfMY/Y66bEMFsMrD+Fn8Pi7Z7ckyELZWyRor+b8CQPARo4xsKi4JKIhwW5LibfVifLreWtAK6OZF5lajm43mcGgFRSMEprXN3OPknU7Pt5/9Ih/pVgMU/oS2ja5umV00N8GP/saPqbfzUoYCHqd+3gOGQZRNyvA4UuXOiLJlOeVlom/1i20ij2zrcFM9TfPqE2eyG5zgcpn4s= llee@C02D2566MD6R"
+
+  - name: "audra"
+    email: "astreetman@splunk.com"
+    ip: "137.83.95.253/32"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCywhMEuciSj3enFbZ7YttWmwlP1lDBYU6HAWMmsT+ZW9xIiZhff7tyRGVSgjpL5wFr2zgMk5fLn4tV63xT6zR4vM4q3K5v2PNQ4npFliXRtSZ0L/9Z7RUNuB2prGwQv+UIldUhMXKDj/DpgDu8mNtupR54eVISzOK8gQqtDJbq9f3PC25ZcZRMcDR8aGJwodJA4FTSBigjZ7nVSrgIhd0knceb9YSYiy/3qyCb9EyWtLuaVjV9/9S5Zp/7U2Q9uiTA2bUhO2Dsanx5u/DBVlVu5YMY4nHoVezPjwl9RqNOEkJGUtF/IYu/bttJOMWbGXC0MCNOEruFZeVuiweQI1G19LI6xA8ecGaUxIBRbWqbD/wDENjjq3kzuHuZgsl26o9PG7b1s8m7e4/6b4YU35IriigRU/3J5eKPDc3c3tbLQYKLvWqjnr7mrUNHtCH7yfc+BGj5mfuVuzf5TSvGZA4F5657HXspJWortpGtw/A2SqxX6Ov0EgO5eF5YFtg0DPk= audrastreetman@C02F5284ML7H"

@@ -1,0 +1,18 @@
+# Sample Suricata systemd unit file.
+[Unit]
+Description=Suricata Intrusion Detection Service
+
+[Service]
+# Environment file to pick up $OPTIONS. On Fedora/EL this would be
+# /etc/sysconfig/suricata, or on Debian/Ubuntu, /etc/default/suricata.
+#EnvironmentFile=-/etc/sysconfig/suricata
+#EnvironmentFile=-/etc/default/suricata
+User=root
+Group=root
+LimitNOFILE=65536
+ExecStartPre=/bin/rm -f /var/run/suricata.pid
+ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml -s signatures.rules -i ens6
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

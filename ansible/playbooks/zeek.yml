@@ -1,0 +1,8 @@
+- hosts: all
+  gather_facts: False
+  become: true
+  vars:
+    hostname: zeek-sensor
+  roles:
+    - linux_common
+    - zeek_sensor

@@ -1,0 +1,4 @@
+- name: Copy limits.conf using templating
+  win_template:
+    src: system-limits.conf.j2
+    dest: C:\Program Files\SplunkUniversalForwarder\etc\apps\SplunkUniversalForwarder\local\limits.conf

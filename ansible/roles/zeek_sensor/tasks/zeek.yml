@@ -1,0 +1,260 @@
+---
+- name: install /etc/systemd/system/capture-int.service to set ens6 settings at boot
+  become: true
+  copy:
+    src: capture-int.service
+    dest: /etc/systemd/system/capture-int.service
+    owner: root
+    group: root
+    mode: 0755
+    force: yes
+
+- name: install /etc/systemd/system/ethtool.service to set ens6 settings at boot
+  become: true
+  copy:
+    src: ethtool.service
+    dest: /etc/systemd/system/ethtool.service
+    owner: root
+    group: root
+    mode: 0755
+    force: yes
+  
+- name: systemctl daemon reload
+  become: true
+  command:  "systemctl daemon-reload"
+
+- name: systemctl to enable capture-int.service
+  become: true
+  command:  "systemctl enable capture-int.service"
+
+- name: systemctl to start capture-int.service
+  become: true
+  command:  "systemctl start capture-int.service"
+
+- name: Install Zeek Binary Repo Locations
+  become: true
+  shell: echo 'deb http://download.opensuse.org/repositories/security:/zeek/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/security:zeek.list
+
+- name: Install Zeek Repo Key
+  become: true
+  shell: curl -fsSL https://download.opensuse.org/repositories/security:zeek/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/security:zeek.gpg > /dev/null
+
+- name: Run the equivalent of "apt-get update" as a separate step
+  become: true
+  apt:
+    update_cache: yes
+
+- name: Upgrade all packages to the latest version
+  become: true
+  apt:
+    name: "*"
+    state: latest
+
+- name: Install required packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - build-essential
+    - linux-headers-oem-20.04
+    - net-tools
+    - gdb
+
+- name: Install required packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+      - cmake
+      - bison
+      - flex
+      - python3-pip
+
+- name: Install Btest
+  become: true
+  command: "pip3 install btest"
+
+- name: Download Spicy
+  get_url: url=https://github.com/zeek/spicy/releases/download/v1.3.0/spicy_linux_ubuntu20.deb dest=/tmp/spicy_linux_ubuntu20.deb
+
+- name: Install Spicy
+  become: true
+  command: "dpkg -i /tmp/spicy_linux_ubuntu20.deb"
+  
+- name: Add Spicy to system-wide $PATH
+  become: true
+  copy:
+    dest: /etc/profile.d/spicy-path.sh
+    content: 'PATH=$PATH:/opt/spicy/bin'
+
+- name: Install Zeek
+  become: true
+  apt:
+    name: zeek
+    update_cache: yes
+    state: latest
+
+- name: Add Zeek to system-wide $PATH
+  become: true
+  copy:
+    dest: /etc/profile.d/zeek-path.sh
+    content: 'PATH=$PATH:/opt/zeek/bin'
+
+####################################################################
+# Configure Zeek
+####################################################################
+
+- name: Enable Zeek logging in JSON format and enable package loading
+  become: true
+  lineinfile:
+    path: '/opt/zeek/share/zeek/site/local.zeek'
+    line: '{{ item }}'
+  with_items:
+    - '# Enable Zeek logging in JSON format'
+    - 'redef LogAscii::json_timestamps = JSON::TS_ISO8601;'
+    - 'redef LogAscii::use_json = T;'
+    - '# Enabling package loading'
+    - '@load packages'
+
+- name: install node.cfg file
+  become: true
+  copy:
+    src: node.cfg
+    dest: /opt/zeek/etc/
+    owner: root
+    group: root
+    mode: 0755
+    force: yes
+    
+- name: Create scripts directory for custom Zeek scripts
+  become: true
+  file:
+    path: '/opt/zeek/share/zeek/scripts'
+    state: directory
+
+- name: Create file extracts directory
+  become: true
+  file:
+    path: '/opt/zeek/extracted'
+    state: directory
+
+- name: install zkg config file
+  become: true
+  copy:
+    src: zkg.config
+    dest: /opt/zeek/etc/zkg/config
+    owner: root
+    group: root
+    mode: 0755
+    force: yes
+
+- name: install local.zeek
+  become: true
+  copy:
+    src: local.zeek
+    dest: /opt/zeek/share/zeek/site
+    owner: root
+    group: root
+    mode: 0755
+    force: yes
+    
+####################################################################
+# Zeek packages install
+####################################################################
+- name: Zeek packages install
+  shell: '/opt/zeek/bin/zkg install --force {{ item }}'
+  become: true
+  with_items:
+    - 'zeek/salesforce/ja3'
+    - 'zeek/salesforce/hassh'
+    - 'zeek/mitre-attack/bzar'
+    - 'zeek/hosom/file-extraction'
+    - 'zeek/j-gras/zeek-af_packet-plugin'
+
+- name: Change extracted files location
+  lineinfile:
+    path: /opt/zeek/share/zeek/site/packages/file-extraction/config.zeek
+    regexp: '^(.*)redef path(.*)$'                          
+    line: 'redef path = "/opt/zeek/extracted/";'
+    backrefs: yes
+    
+- name: copy file extract main.zeek
+  copy:
+    src: file_extract_main.zeek
+    dest: /opt/zeek/share/zeek/site/packages/file-extraction/main.zeek
+    owner: root
+    group: root
+    force: yes
+
+- name: copy install_spicy.sh
+  copy:
+    src: install_spicy.sh
+    dest: /tmp/install_spicy.sh
+    owner: root
+    group: root
+    force: yes
+
+- name: copy install_spicy_analyzers.sh
+  copy:
+    src: install_spicy_analyzers.sh
+    dest: /tmp/install_spicy_analyzers.sh
+    owner: root
+    group: root
+    force: yes
+    
+- name: install startup script for zeek - systemd
+  copy:
+    src: systemd-zeek.service
+    dest: /etc/systemd/system/zeek.service
+    owner: root
+    group: root
+    mode: 0755
+    force: yes
+
+- name: systemctl daemon reload
+  become: true
+  command:  "systemctl daemon-reload"
+  
+- name: systemctl enable zeek
+  become: true
+  command:  "systemctl enable zeek.service"
+  
+- name: Zeek install Spicy plugin
+  command: "/bin/bash /tmp/install_spicy.sh"
+  become: true
+
+- name: Zeek install Spicy analyzers
+  command: "/bin/bash /tmp/install_spicy_analyzers.sh"
+  become: true
+  
+- name: Zeek packages install
+  shell: '/opt/zeek/bin/zkg install --force {{ item }}'
+  become: true
+  with_items:
+    - 'shannon/imphash-public'
+
+- name: Zeek packet capture permissions
+  shell: 'sudo setcap cap_net_raw=eip /opt/zeek/bin/zeek'
+  become: true
+
+- name: Zeek packet capture permissions
+  shell: 'sudo setcap cap_net_raw=eip /opt/zeek/bin/capstats'
+  become: true
+
+- name: Set ens6 mtu
+  shell: 'sudo ifconfig ens6 mtu 9001'
+  become: true
+
+- name: Set ens6 up
+  shell: 'sudo ifconfig ens6 up'
+  become: true
+  
+####################################################################
+# Zeek deploy
+####################################################################
+- name: Run Zeek deploy
+  shell: '/opt/zeek/bin/zeekctl {{ item }}'
+  become: true
+  with_items:
+    - 'install'
+    - 'deploy'
+    - 'status'

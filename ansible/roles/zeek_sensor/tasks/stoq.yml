@@ -1,0 +1,103 @@
+- name: Install required packages
+  package: 
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - libffi-dev
+    - libfuzzy-dev
+    - automake
+    - autoconf
+    - libtool
+    - libltdl-dev
+     
+- name: Create stoq plugins directory
+  become: true
+  command: "mkdir -p /root/.stoq/plugins"
+
+- name: Install Stoq
+  become: true
+  command: "pip3 install stoq-framework"
+
+- name: Install Stoq filedir plugin
+  become: true
+  command: "stoq install --github stoq:filedir"
+
+- name: Install Stoq dirmon plugin
+  become: true
+  command: "stoq install --github stoq:dirmon"
+
+- name: Install Stoq peinfo plugin
+  become: true
+  command: "stoq install --github stoq:peinfo"
+
+- name: Install Stoq yara plugin
+  become: true
+  command: "stoq install --github stoq:yara"
+
+- name: Install Stoq hash plugin
+  become: true
+  command: "stoq install --github stoq:hash"
+  
+- name: Install Stoq stdout plugin
+  become: true
+  command: "stoq install --github stoq:stdout"
+
+- name: Install Stoq
+  become: true
+  command: "sudo BUILD_LIB=1 stoq install --github stoq:hash_ssdeep"
+  
+- name: Insert pause for dirmon
+  lineinfile:
+    path: /root/.stoq/plugins/dirmon/dirmon.stoq
+    line: 'delay: 1'
+    
+- name: Create results directory for stoq results
+  become: true
+  file:
+    path: '/tmp/results'
+    state: directory
+
+- name: copy surge_dispatchers.yar dispatcher rule
+  copy:
+    src: surge_dispatchers.yar
+    dest: /root/.stoq/plugins/yarascan/rules/surge_dispatchers.yar
+    owner: root
+    group: root
+    mode: 0644
+    force: yes
+
+- name: Change dispatch rules in yara rule
+  become: true
+  lineinfile:
+    path: /root/.stoq/plugins/yarascan/yarascan.stoq
+    line: 'dispatch_rules = rules/surge_dispatchers.yar'
+    
+- name: install dirmon.py with pause code
+  copy:
+    src: dirmon.py
+    dest: /root/.stoq/plugins/dirmon/dirmon.py
+    owner: root
+    group: root
+    mode: 0644
+    force: yes
+    
+- name: install startup script for stoq - systemd
+  copy:
+    src: systemd-stoq.service
+    dest: /etc/systemd/system/stoq.service
+    owner: root
+    group: root
+    mode: 0755
+    force: yes
+
+- name: systemctl daemon reload
+  become: true
+  command:  "systemctl daemon-reload"
+  
+- name: systemctl enable stoq
+  become: true
+  command:  "systemctl enable stoq.service"
+
+- name: systemctl start stoq
+  become: true
+  command:  "systemctl start stoq.service"

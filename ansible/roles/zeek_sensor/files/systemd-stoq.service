@@ -1,0 +1,11 @@
+[Unit]
+Description=stoQ Service
+
+[Service]
+User=root
+Group=root
+LimitNOFILE=65536
+ExecStart=/usr/local/bin/stoq run -P dirmon -C filedir -R yara --plugin-opts dirmon:source_dir=/opt/zeek/extracted filedir:results_dir=/tmp/results --log-level debug
+
+[Install]
+WantedBy=multi-user.target
