@@ -18,7 +18,7 @@ data "aws_ami" "latest-ubuntu" {
 resource "aws_instance" "zeek_sensor" {
   count = var.config.zeek_sensor == "1" ? 1 : 0
   ami           = data.aws_ami.latest-ubuntu[count.index].id
-  instance_type = var.config.instance_type_ec2
+  instance_type          = var.config.aws_tier == "free" ? "t2.micro" : var.config.instance_type_ec2
   key_name = var.config.key_name
   subnet_id = var.ec2_subnet_id
   vpc_security_group_ids = [var.vpc_security_group_ids]

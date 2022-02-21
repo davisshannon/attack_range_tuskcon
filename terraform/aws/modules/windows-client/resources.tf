@@ -15,7 +15,7 @@ data "aws_ami" "windows-client-ami" {
 resource "aws_instance" "windows_client" {
   count         = "${var.config.windows_client}"
   ami           = data.aws_ami.windows-client-ami[count.index].id
-  instance_type = var.config.windows_client_zeek_capture == "1" ? "m5.xlarge" : var.config.instance_type_ec2
+  instance_type          = var.config.aws_tier == "free" ? "t2.micro" : var.config.instance_type_ec2
   key_name = var.config.key_name
   subnet_id = var.ec2_subnet_id
   vpc_security_group_ids = [var.vpc_security_group_ids]
