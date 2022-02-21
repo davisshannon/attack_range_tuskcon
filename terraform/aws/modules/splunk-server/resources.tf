@@ -18,7 +18,7 @@ data "aws_ami" "latest-ubuntu" {
 
 resource "aws_instance" "splunk-server" {
   ami                    = data.aws_ami.latest-ubuntu.id
-  instance_type          = "c5n.9xlarge"
+  instance_type          = var.config.instance_type_ec2
   key_name               = var.config.key_name
   subnet_id              = var.ec2_subnet_id
   vpc_security_group_ids = [var.vpc_security_group_ids]
