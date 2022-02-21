@@ -11,7 +11,7 @@ User=root
 Group=root
 LimitNOFILE=65536
 ExecStartPre=/bin/rm -f /var/run/suricata.pid
-ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml -s signatures.rules -i ens6
+ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml -s signatures.rules -i ens5
 ExecReload=/bin/kill -USR2 $MAINPID
 
 [Install]

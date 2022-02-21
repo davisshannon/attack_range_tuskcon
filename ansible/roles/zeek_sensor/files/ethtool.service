@@ -1,16 +1,16 @@
 [Unit]
-Description=ens6 rx and tx settings
+Description=ens5 rx and tx settings
 After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/ethtool -C ens6 adaptive-rx on rx-usecs 100
+ExecStart=/usr/sbin/ethtool -C ens5 adaptive-rx on rx-usecs 100
 TimeoutStartSec=0
 RemainAfterExit=yes
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/ethtool -K ens6 rx off tx off sg off gso off gro off
+ExecStart=/usr/sbin/ethtool -K ens5 rx off tx off sg off gso off gro off
 TimeoutStartSec=0
 RemainAfterExit=yes
 

@@ -26,29 +26,14 @@ resource "aws_instance" "zeek_sensor" {
   tags = {
     Name = "ar-zeek-sensor-${var.config.range_name}-${var.config.key_name}"
   }
-}
 
-resource "aws_network_interface" "zeek_capture_nic" {
-  count = var.config.zeek_sensor == "1" ? 1 : 0
-  subnet_id       = var.ec2_subnet_id
-  private_ips     = ["10.0.1.99"]
-  security_groups = [var.vpc_security_group_ids]
-
-  attachment {
-    instance     = aws_instance.zeek_sensor[0].id
-    device_index = 1
-  }
-}
-
-resource "null_resource" "zeek_sensor_provision" {
-  count = var.config.zeek_sensor == "1" ? 1 : 0
-  provisioner "remote-exec" {
+provisioner "remote-exec" {
     inline = ["echo booted"]
 
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      host        = aws_instance.zeek_sensor[0].public_ip
+      host        = aws_instance.zeek_sensor[count.index].public_ip
       private_key = file(var.config.private_key_path)
     }
   }
@@ -62,7 +47,7 @@ resource "null_resource" "zeek_sensor_provision" {
 resource "aws_ec2_traffic_mirror_target" "zeek_target" {
   count = var.config.zeek_sensor == "1" ? 1 : 0
   description          = "VPC Tap for Zeek"
-  network_interface_id = aws_network_interface.zeek_capture_nic[0].id
+  network_interface_id = aws_instance.zeek_sensor[0].primary_network_interface_id
 }
 
 resource "aws_ec2_traffic_mirror_filter" "zeek_filter" {

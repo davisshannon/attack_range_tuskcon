@@ -240,12 +240,12 @@
   shell: 'sudo setcap cap_net_raw=eip /opt/zeek/bin/capstats'
   become: true
 
-- name: Set ens6 mtu
-  shell: 'sudo ifconfig ens6 mtu 9001'
+- name: Set ens5 mtu
+  shell: 'sudo ifconfig ens5 mtu 9001'
   become: true
 
-- name: Set ens6 up
-  shell: 'sudo ifconfig ens6 up'
+- name: Set ens5 up
+  shell: 'sudo ifconfig ens5 up'
   become: true
   
 ####################################################################

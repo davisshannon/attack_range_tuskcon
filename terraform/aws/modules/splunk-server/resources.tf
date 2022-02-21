@@ -24,13 +24,6 @@ resource "aws_instance" "splunk-server" {
   vpc_security_group_ids = [var.vpc_security_group_ids]
   private_ip             = var.config.splunk_server_private_ip
   depends_on             = [var.phantom_server_instance]
-  root_block_device {
-    volume_type = "gp3"
-    volume_size = "3000"
-    iops = "16000"
-    throughput = "1000"
-    delete_on_termination = "true"
-  }
   tags = {
     Name = "ar-splunk-${var.config.range_name}-${var.config.key_name}"
   }
