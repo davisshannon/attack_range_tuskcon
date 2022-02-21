@@ -1,6 +1,0 @@
-- name: Copy new outputs.conf configuration
-  copy:
-    src: outputs.conf
-    dest: /opt/splunk/etc/system/local/outputs.conf
-    owner: splunk
-    group: splunk

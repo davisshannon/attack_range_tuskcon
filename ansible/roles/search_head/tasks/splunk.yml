@@ -54,25 +54,10 @@
   become_user: splunk
   when: splunk_path.stat.exists == false
 
-- name: copy license
-  template:
-    src: enterprise.lic
-    dest: /tmp/enterprise.lic
-    owner: splunk
-    group: splunk
-
 - name: enable boot-start
   tags:
    - install
   shell: /opt/splunk/bin/splunk enable boot-start -user splunk
-  when: splunk_path.stat.exists == false
-
-- name: add license
-  tags:
-   - install
-  shell: /opt/splunk/bin/splunk add licenses /tmp/enterprise.lic -auth admin:{{splunk_admin_password}}
-  become: yes
-  become_user: splunk
   when: splunk_path.stat.exists == false
 
 - name: restart splunk
