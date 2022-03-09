@@ -25,7 +25,7 @@ resource "aws_instance" "splunk-server" {
   private_ip             = "10.0.${var.config.range_number}.12"
   depends_on             = [var.phantom_server_instance]
   tags = {
-    Name = "ar-splunk-${var.config.range_name}-${var.config.key_name}"
+    Name = "ar-splunk-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
   }
 
   provisioner "remote-exec" {
