@@ -4,7 +4,7 @@
     state: directory
 
 - name: Download sample files to specified path
-  ansible.windows.win_get_url:
+  win_get_url:
     url: http://www.toadspestcontrols.com/ransomware/variants/099.zip
     dest: C:\Files\099.zip
 
