@@ -18,13 +18,13 @@ data "aws_ami" "latest-ubuntu" {
 resource "aws_instance" "zeek_sensor" {
   count = var.config.zeek_sensor == "1" ? 1 : 0
   ami           = data.aws_ami.latest-ubuntu[count.index].id
-  instance_type          = var.config.aws_tier == "free" ? "t2.micro" : var.config.instance_type_ec2
+  instance_type          = var.config.instance_type_ec2
   key_name = var.config.key_name
   subnet_id = var.ec2_subnet_id
   vpc_security_group_ids = [var.vpc_security_group_ids]
-  private_ip = var.config.zeek_sensor_private_ip
+  private_ip = "10.0.${var.config.range_number}.14"
   tags = {
-    Name = "ar-zeek-sensor-${var.config.range_name}-${var.config.key_name}"
+    Name = "ar-zeek-sensor-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
   }
 
 provisioner "remote-exec" {
