@@ -313,10 +313,11 @@ class TerraformController(IEnvironmentController):
         print_messages = []
 
         # splunk server will always be built
-        splunk_ip = self.getIP(response, 'splunk')
-        msg = "\n\nAccess Splunk via:\n\tWeb > http://" + splunk_ip + ":8000\n\tusername: <your first name> \n\tpassword: " + self.config['attack_range_password'] + "\n\tSSH > ssh -i <your SSH key>" \
-        + " <your first name>@" + splunk_ip
-        print_messages.append(msg)
+        if self.getIP(response, "splunk"): 
+            splunk_ip = self.getIP(response, 'splunk')
+            msg = "\n\nAccess Splunk via:\n\tWeb > http://" + splunk_ip + ":8000\n\tusername: <your first name> \n\tpassword: " + self.config['attack_range_password'] + "\n\tSSH > ssh -i <your SSH key>" \
+            + " <your first name>@" + splunk_ip
+            print_messages.append(msg)
 
         # windows domain controller
         if self.getIP(response, 'win-dc'):
