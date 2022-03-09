@@ -18,7 +18,7 @@ data "aws_ami" "latest-windows-server-2019" {
 resource "aws_instance" "windows_domain_controller" {
   count         = var.config.windows_domain_controller == "1" ? 1 : 0
   ami           = data.aws_ami.latest-windows-server-2019[count.index].id
-  instance_type          = var.config.aws_tier == "free" ? "t2.micro" : var.config.instance_type_ec2
+  instance_type          = var.config.instance_type_ec2
   key_name = var.config.key_name
   subnet_id = var.ec2_subnet_id
   private_ip             = var.config.windows_domain_controller_private_ip
