@@ -25,11 +25,7 @@ class TerraformController(IEnvironmentController):
         statefile = self.config['range_name'] + ".terraform.tfstate"
         if self.config['provider'] == 'aws':
             self.config["statepath"] = os.path.join(os.path.dirname(__file__), '../terraform/aws/local/state', statefile)
-        elif self.config['provider'] == 'azure':
-            self.config["statepath"] = os.path.join(os.path.dirname(__file__), '../terraform/azure/local/state', statefile)
-
-        self.config['splunk_es_app_version'] = re.findall(r'\d+', self.config['splunk_es_app'])[0]
-
+    
         custom_dict = self.config.copy()
         variables = dict()
         variables['config'] = custom_dict
@@ -196,7 +192,7 @@ class TerraformController(IEnvironmentController):
 
         # aws cloud provider
         if self.config['provider'] == 'aws':
-            instance = aws_service.get_instance_by_name('ar-splunk-' + self.config['range_name'] + '-' + self.config['key_name'], self.config)
+            instance = aws_service.get_instance_by_name('ar-splunk-' + self.config['range_name'] + '-' + self.config['key_name'] + '-' + self.config['range_number'], self.config)
 
             if instance['State']['Name'] == 'running':
                 instance_ip = instance['NetworkInterfaces'][0]['Association']['PublicIp']
