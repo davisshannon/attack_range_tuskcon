@@ -22,7 +22,7 @@ module "vpc" {
   name                 = "${var.config.range_name}_vpc-${var.config.key_name}"
   cidr                 = "10.0.0.0/16"
   azs                  = data.aws_availability_zones.available.names
-  public_subnets       = ["10.0.1.0/24"]
+  public_subnets       = ["10.0.1.0/16"]
   enable_dns_hostnames = true
 
 }
