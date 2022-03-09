@@ -1,7 +1,0 @@
-- hosts: all
-  gather_facts: False
-  become: true
-  vars:
-    hostname: kali-machine
-  roles:
-    - linux_common
