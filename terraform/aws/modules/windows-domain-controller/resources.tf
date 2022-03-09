@@ -21,7 +21,7 @@ resource "aws_instance" "windows_domain_controller" {
   instance_type          = var.config.instance_type_ec2
   key_name = var.config.key_name
   subnet_id = var.ec2_subnet_id
-  private_ip             = var.config.windows_domain_controller_private_ip
+  private_ip             = "10.0."{var.config.range_number}".13"
   vpc_security_group_ids = [var.vpc_security_group_ids]
   tags = {
     Name = "ar-win-dc-${var.config.range_name}-${var.config.key_name}--${count.index}"
