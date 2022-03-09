@@ -204,21 +204,6 @@ class TerraformController(IEnvironmentController):
                 self.log.error('ERROR: splunk server is not running.')
                 return None, None
 
-        # azure cloud provider
-        elif self.config['provider'] == 'azure':
-            instance = azure_service.get_instance(self.config, "ar-splunk-" + self.config['range_name'] + "-" + self.config['key_name'], self.log)
-
-            if instance['vm_obj'].instance_view.statuses[1].display_status == "VM running":
-                instance_ip = instance['public_ip']
-            else:
-                self.log.error('ERROR: splunk server is not running.')
-                return None, None
-
-        # orca cloud provider
-        elif self.config['provider'] == 'orca':
-            instance_ip = self.config["splunk_instance_ip"]
-            splunk_rest_port = self.config["splunk_rest_port"]
-
         return instance_ip, splunk_rest_port
 
     def load_file(self, file_path):
@@ -313,7 +298,7 @@ class TerraformController(IEnvironmentController):
         print_messages = []
 
         # splunk server will always be built
-        if self.getIP(response, "splunk"): 
+        if self.getIP(response, "splunk"):
             splunk_ip = self.getIP(response, 'splunk')
             msg = "\n\nAccess Splunk via:\n\tWeb > http://" + splunk_ip + ":8000\n\tusername: <your first name> \n\tpassword: " + self.config['attack_range_password'] + "\n\tSSH > ssh -i <your SSH key>" \
             + " <your first name>@" + splunk_ip
@@ -325,58 +310,24 @@ class TerraformController(IEnvironmentController):
             msg = "Access Windows Domain Controller via:\n\tRDP > rdp://" + win_ip + ":3389\n\tusername: <your first name> \n\tpassword: " + self.config['attack_range_password']
             print_messages.append(msg)
 
-        # windows server
-        if self.getIP(response, 'win-server'):
-            win_server = self.getIP(response, 'win-server')
-            msg = "Access Windows Servers via:\n\tRDP > rdp://" + win_server + ":3389\n\tusername: <your first name> \n\tpassword: " + self.config['attack_range_password']
-            print_messages.append(msg)
-            
         # windows client
         if self.getIP(response, 'win-client'):
             win_server = self.getIP(response, 'win-client')
             msg = "Access Windows Clients via:\n\tRDP > rdp://" + win_server + ":3389\n\tusername: <your first name> \n\tpassword: " + self.config['attack_range_password']
             print_messages.append(msg)
 
-        # kali linux
-        if self.getIP(response, 'kali'):
-            kali_ip = self.getIP(response, 'kali')
-            msg = "Access Kali via:\n\tSSH > ssh -i <your SSH key>" \
-            + " <your first name>@" + kali_ip
-            print_messages.append(msg)
-
-        # osquery linux
-        if self.getIP(response, 'usquerylnx'):
-            osquerylnx_ip = self.getIP(response, 'osquerylnx')
-            msg = "Access Osquery via:\n\tSSH > ssh -i <your SSH key>" \
-            + " <your first name>@" + osquerylnx_ip
-            print_messages.append(msg)
-
-        # sysmon linux
-        if self.getIP(response, 'sysmon_linux'):
-            sysmon_linux_ip = self.getIP(response, 'sysmon_linux')
-            msg = "Access Linux Sysmon Host via:\n\tSSH > ssh -i <your SSH key>" \
-            + " <your first name>@" + sysmon_linux_ip
-            print_messages.append(msg)
-
-        # phantom linux
-        if self.getIP(response, 'phantom'):
-            phantom_ip = self.getIP(response, 'phantom')
-            msg = "Access Phantom via:\n\tWeb > https://" + phantom_ip + "\n\tSSH > ssh -i" + self.config['private_key_path'] \
-            + " centos@" + phantom_ip + "\n\tusername: admin \n\tpassword: " + self.config['attack_range_password']
-            print_messages.append(msg)
-        
         # zeek sensor
         if self.getIP(response, 'zeek_sensor'):
             kali_ip = self.getIP(response, 'zeek_sensor')
             msg = "Access Zeek via:\n\tSSH > ssh -i <your SSH key>" \
             + " <your first name>@" + zeek_ip
             print_messages.append(msg)
-        
+
         #print users.yml info
         with open(os.path.join(os.path.dirname(__file__), '../', self.config['user_info']), 'r') as user_file :
             userdata = user_file.read()
             print_messages.append(userdata)
-            
+
         return print_messages
 
 
@@ -395,17 +346,6 @@ class TerraformController(IEnvironmentController):
                 else:
                     response.append([instance['Tags'][0]['Value'],
                                      instance['State']['Name']])
-
-        elif self.config['provider'] == 'azure':
-            instances = azure_service.get_all_instances(self.config)
-            response = []
-            instances_running = False
-            for instance in instances:
-                if instance['vm_obj'].instance_view.statuses[1].display_status == "VM running":
-                    instances_running = True
-                    response.append([instance['vm_obj'].name, instance['vm_obj'].instance_view.statuses[1].display_status, instance['public_ip']])
-                else:
-                    response.append([instance['vm_obj'].name, instance['vm_obj'].instance_view.statuses[1].display_status])
 
         print()
         print('Status Virtual Machines\n')
@@ -452,15 +392,6 @@ class TerraformController(IEnvironmentController):
             target_public_ip = aws_service.get_single_instance_public_ip(server_str, self.config)
             ansible_user = 'Administrator'
             ansible_port = 5986
-        elif self.config['provider'] == 'azure':
-            target_public_ip = azure_service.get_instance(self.config, server_str, self.log)['public_ip']
-            ansible_user = 'AzureAdmin'
-            ansible_port = 5985
-        elif self.config['provider'] == 'orca':
-            target_public_ip = self.config["splunk_instance_ip"]
-            splunk_rest_port = self.config['splunk_rest_port']
-
-
 
         dump_search = "search %s earliest=-%s latest=%s | sort 0 _time" \
             % (dump_data['search'], dump_data['earliest'], dump_data['latest'])
@@ -482,9 +413,6 @@ class TerraformController(IEnvironmentController):
 
         if self.config['provider'] == 'aws':
             splunk_ip = aws_service.get_single_instance_public_ip("ar-splunk-" + self.config['range_name'] + "-" + self.config['key_name'], self.config)
-        elif self.config['provider'] == 'azure':
-            splunk_ip = azure_service.get_instance(self.config, "ar-splunk-" + self.config['range_name'] + "-" + self.config['key_name'], self.log)['public_ip']
-        elif self.config['provider'] == 'orca':
             ansible_user = 'ansible'
             splunk_ip = self.config["splunk_instance_ip"]
             ansible_port = self.config["splunk_ssh_port"]

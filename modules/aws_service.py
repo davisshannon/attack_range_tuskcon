@@ -86,20 +86,6 @@ def change_ec2_state(instances, new_state, log, config):
                 )
                 log.info('Successfully started instance with ID ' + instance['InstanceId'] + ' .')
 
-
-# def upload_file_s3_bucket(file_name, results, test_file, isArchive):
-#     region = config['region']
-#     s3_client = boto3.client('s3', region_name=region)
-#     if isArchive:
-#         response = s3_client.upload_file(file_name, 'attack-range-attack-data', str(test_file['simulation_technique'] + '/attack_data.tar.gz'))
-#     else:
-#         response = s3_client.upload_file(file_name, 'attack-range-attack-data', str(test_file['simulation_technique'] + '/attack_data.json'))
-#
-#     with open('tmp/test_results.yml', 'w') as f:
-#         yaml.dump(results, f)
-#     response2 = s3_client.upload_file('tmp/test_results.yml', 'attack-range-automated-testing', str(test_file['simulation_technique'] + '/test_results.yml'))
-#     os.remove('tmp/test_results.yml')
-
 def upload_file_s3_bucket(s3_bucket, file_path, S3_file_path, config):
     region = config['region']
     s3_client = boto3.client('s3', region_name=region)
