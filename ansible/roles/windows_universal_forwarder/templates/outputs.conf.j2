@@ -2,4 +2,4 @@
 defaultGroup=my_indexers
 
 [tcpout:my_indexers]
-server={% if aws_tier == "free" %}{{splunk_headend_ip}}{% endif %}{{ splunk_indexer_ip }}:9997
+server={{ splunk_indexer_ip }}:9997
