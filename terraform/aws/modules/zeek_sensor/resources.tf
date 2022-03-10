@@ -77,7 +77,7 @@ resource "aws_ec2_traffic_mirror_filter_rule" "zeek_inbound" {
   traffic_direction = "ingress"
 }
 
-resource "aws_ec2_traffic_mirror_session" "zeek_windows_dc_session" {
+resource "aws_ec2_traffic_mirror_session" "zeek_windows_dc_session-${var.config.range_number}" {
   count         = var.config.windows_domain_controller_zeek_capture == "1" && var.config.zeek_sensor == "1" ? "${var.config.windows_domain_controller}" : 0
   description              = "Zeek Mirror Session for Windows Domain Controller"
   depends_on = [var.windows_domain_controller_instance]
@@ -87,7 +87,7 @@ resource "aws_ec2_traffic_mirror_session" "zeek_windows_dc_session" {
   session_number           = "10${count.index}"
 }
 
-resource "aws_ec2_traffic_mirror_session" "zeek_windows_client_session" {
+resource "aws_ec2_traffic_mirror_session" "zeek_windows_client_session-${var.config.range_number}" {
   count         = var.config.windows_client_zeek_capture == "1" && var.config.zeek_sensor == "1" ? "${var.config.windows_client}" : 0
   description              = "Zeek Mirror Session for Windows Client"
   depends_on = [var.windows_client_instance]
