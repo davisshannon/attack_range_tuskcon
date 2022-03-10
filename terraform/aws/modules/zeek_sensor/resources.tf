@@ -24,7 +24,7 @@ resource "aws_instance" "zeek_sensor" {
   vpc_security_group_ids = [var.vpc_security_group_ids]
   private_ip = "10.0.${var.config.range_number}.14"
   tags = {
-    Name = "ar-zeek-sensor-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}-${var.config.range_number}"
+    Name = "ar-zeek-sensor-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
   }
 
 provisioner "remote-exec" {
