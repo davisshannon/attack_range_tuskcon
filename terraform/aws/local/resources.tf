@@ -11,7 +11,6 @@ module "splunk-server" {
   source			           = "../modules/splunk-server"
 	vpc_security_group_ids = module.networkModule.sg_vpc_id
 	ec2_subnet_id         = module.networkModule.ec2_subnet_id
-  phantom_server_instance = module.phantom-server.phantom_server_instance
   config                = var.config
 }
 
