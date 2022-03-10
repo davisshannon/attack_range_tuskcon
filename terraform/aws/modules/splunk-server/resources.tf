@@ -25,7 +25,7 @@ resource "aws_instance" "splunk-server" {
   private_ip             = var.config.splunk_server_private_ip
   root_block_device {
     volume_type = "gp3"
-    volume_size = "3000"
+    volume_size = "300"
     iops = "16000"
     throughput = "1000"
     delete_on_termination = "true"
