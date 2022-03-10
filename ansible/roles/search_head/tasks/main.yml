@@ -9,6 +9,7 @@
 - include: configure_props.yml
 - include: configure_server_conf.yml
 - include: create_serverclass.yml
+- include: configure_outputs_conf.yml
 - include: install_botsv1_dataset.yml
   when: splunk_bots_dataset is regex("(1)(?!a)")
 - include: install_botsv1a_dataset.yml
