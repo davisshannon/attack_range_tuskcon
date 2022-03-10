@@ -23,7 +23,6 @@ resource "aws_instance" "splunk-server" {
   subnet_id              = var.ec2_subnet_id
   vpc_security_group_ids = [var.vpc_security_group_ids]
   private_ip             = "10.0.${var.config.range_number}.12"
-  depends_on             = [var.phantom_server_instance]
   tags = {
     Name = "ar-splunk-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
   }
