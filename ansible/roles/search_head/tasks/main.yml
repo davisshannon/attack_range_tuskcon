@@ -40,4 +40,4 @@
     - "{{ tuskcon_app }}"
 - include: configure_attack_range_dashboard.yml
 - include: configure_escu.yml
-- include: configure_user_prefs_conf.yml
+- include: configure_user_prefs.yml
