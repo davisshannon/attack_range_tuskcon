@@ -1,6 +1,6 @@
 users:
 
-- name: "user-x"
-  email: "x"
-  ip: "x.x.x.x"
-  key: "x public key"
+- name: "user-i"
+  email: "bob@bob.com"
+  ip: "103.152.126.0/23"
+  key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1NeXXsf0W2n4B7RpUmnU316rGVPFad9j+jW2Pe9pVfSBdMNbnE0PaNZxVPe+SO2bIYxr+fkYNGFsPyhiL9k1Iig4tWrbGSfXOehEqMPSizl064qrzppaS/h8AAkSvbtmMMdk8V5g/5j+X17Wp5bGEa0dMM0FO+S9NvK2TkqyhgX2wTwMETui1U/Gn8UOBEkLjz2N0P+2sHlqi67d+waDbR7+0u+c7ilfsalNOMw4LOWh6duH5HngTFpGXpCcKeAibPIl+07Ns72LMdS0HVlW3IJ+sUsU0mZBQx4K8b3+O4xH5I1lmre1rdF4p2TKZb8luVQ/Dzjib/M0Lrw7fml42lOq/Oj1EKPpohMmREN935pCHBnIuIikxDWHlHtCv1BZMnfACyaCxQkuiGv/QJpFnuH2DR9m7K7h//UidBIc0Rw9xYTyT/DOQRaD3soYrPcvAh6+4fNlmTunynhogSsW1JcViGp3X1Fr8y95HmyZBBCyTQAJr05ltmauldvJhi8U= shannond@shannond-mbp-f451c"

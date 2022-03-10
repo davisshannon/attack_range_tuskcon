@@ -1,5 +1,5 @@
 ---
-- name: install /etc/systemd/system/capture-int.service to set ens6 settings at boot
+- name: install /etc/systemd/system/capture-int.service to set ens5 settings at boot
   become: true
   copy:
     src: capture-int.service
@@ -9,7 +9,7 @@
     mode: 0755
     force: yes
 
-- name: install /etc/systemd/system/ethtool.service to set ens6 settings at boot
+- name: install /etc/systemd/system/ethtool.service to set ens5 settings at boot
   become: true
   copy:
     src: ethtool.service
