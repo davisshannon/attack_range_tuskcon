@@ -22,7 +22,7 @@ resource "aws_instance" "zeek_sensor" {
   key_name = var.config.key_name
   subnet_id = var.ec2_subnet_id
   vpc_security_group_ids = [var.vpc_security_group_ids]
-  private_ip = "10.0.${var.config.range_number}.14"
+  private_ip = var.config.zeek_sensor_private_ip
   tags = {
     Name = "ar-zeek-sensor-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
   }
@@ -40,7 +40,7 @@ provisioner "remote-exec" {
 
   provisioner "local-exec" {
     working_dir = "../../../ansible/"
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key ${var.config.private_key_path} -i '${aws_instance.zeek_sensor[0].public_ip},' playbooks/zeek.yml -e 'ansible_python_interpreter=/usr/bin/python3 splunk_uf_url=${var.config.splunk_uf_linux_deb_url} splunk_uf_binary=${var.config.splunk_uf_binary} windows_domain_controller_zeek_capture=${var.config.windows_domain_controller_zeek_capture} windows_client_zeek_capture=${var.config.windows_client_zeek_capture} splunk_indexer_ip=10.0.${var.config.range_number}.12'"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key ${var.config.private_key_path} -i '${aws_instance.zeek_sensor[0].public_ip},' playbooks/zeek.yml -e 'ansible_python_interpreter=/usr/bin/python3 splunk_uf_url=${var.config.splunk_uf_linux_deb_url} splunk_uf_binary=${var.config.splunk_uf_binary} windows_domain_controller_zeek_capture=${var.config.windows_domain_controller_zeek_capture} windows_client_zeek_capture=${var.config.windows_client_zeek_capture} splunk_indexer_ip=${var.config.splunk_server_private_ip}'"
   }
 }
 
