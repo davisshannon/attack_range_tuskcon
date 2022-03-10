@@ -23,6 +23,13 @@ resource "aws_instance" "windows_domain_controller" {
   subnet_id = var.ec2_subnet_id
   private_ip             = var.config.windows_domain_controller_private_ip
   vpc_security_group_ids = [var.vpc_security_group_ids]
+  root_block_device {
+    volume_type = "gp3"
+    volume_size = "300"
+    iops = "16000"
+    throughput = "1000"
+    delete_on_termination = "true"
+  }
   tags = {
     Name = "ar-win-dc-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
   }
