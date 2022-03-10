@@ -1,0 +1,7 @@
+- name: copy user-prefs.conf to splunk server
+  copy:
+    src: user-prefs.conf
+    dest: /opt/splunk/etc/apps/user-prefs/local/user-prefs.conf
+    owner: splunk
+    group: splunk
+  notify: restart splunk
