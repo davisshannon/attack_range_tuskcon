@@ -36,5 +36,6 @@
     - "{{ splunk_linux_ta }}"
     - "{{ splunk_zeek_ta }}"
     - "{{ infrastructure_ta }}"
+    - "{{ tuskcon_app }}"
 - include: configure_attack_range_dashboard.yml
 - include: configure_escu.yml
