@@ -21,6 +21,13 @@ resource "aws_instance" "windows_client" {
   vpc_security_group_ids = [var.vpc_security_group_ids]
   private_ip             = "10.0.1.4${count.index}"
   depends_on             = [var.windows_domain_controller_instance]
+  root_block_device {
+    volume_type = "gp3"
+    volume_size = "300"
+    iops = "16000"
+    throughput = "1000"
+    delete_on_termination = "true"
+  }
   tags = {
     Name = "ar-win-client-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
   }
