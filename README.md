@@ -7,8 +7,8 @@
 
 1. `ssh to 13.236.6.3.  Your username is the just user- and then your number. I'll give you the password.`
 2. `copy the contents of /tmp/tuskcon.keys to your local host, we'll use this in a bit.`
-3. `create a .ssh directory in your home directory (mkdir .ssh).
-4. `copy /tmp/tuskcon.cer to your .ssh directory (cp /tmp/tuskcon.cer .ssh/.).
+3. `create a .ssh directory in your home directory (mkdir .ssh).`
+4. `copy /tmp/tuskcon.cer to your .ssh directory (cp /tmp/tuskcon.cer .ssh/.).`
 5. `git clone https://raw.githubusercontent.com/davisshannon/attack_range_tuskcon/main/scripts/ubuntu_deploy.sh`
 6. `bash ubuntu_deploy.sh`
 7. `cd into attack_range_tuskcon`
