@@ -1,3 +1,13 @@
+- name: Create folder directory for web configuration
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: splunk
+    group: splunk
+    recurse: yes
+  with_items:
+    - /opt/splunk/etc/apps/user-prefs/local/
+    
 - name: copy user-prefs.conf to splunk server
   copy:
     src: user-prefs.conf
