@@ -9,7 +9,7 @@
         <img src="https://img.shields.io/github/stars/splunk/attack_range?style=social" /></a>
 </p>
 
-# Attack Range Surge⚔️
+# Attack Range TuskCon⚔️
 ![Attack Range Log](docs/surge_logo.png)
 
 ## Purpose 🛡
