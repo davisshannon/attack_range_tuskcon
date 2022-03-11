@@ -1,5 +1,5 @@
 # Attack Range TuskCon⚔️
-![Attack Range Log](docs/surge_logo.png)
+![Ransomware Races](docs/ransomware-races.jpeg)
 
 ## Installation 🏗
 
