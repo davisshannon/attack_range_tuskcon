@@ -10,7 +10,7 @@
 3. `cd into attack_range_tuskcon`
 4. `edit attack_range.conf with at least the following items. leave others alone`
 - `range_name- Add your user number to the end of tuskcon-.`
-5. `run aws configure to configure your aws client. The key and private key are in /tmp/tuskcon.keys.  Copy this to another file before running aws configure.`
+5. `run aws configure to configure your aws client. The key and private key are in /tmp/tuskcon.keys.  Copy the contents to your local host before running aws configure.`
 6. `run source venv/bin/activate to enter the virtual environment.`
 7. `run python attack_range.py build to build the range.`
 
