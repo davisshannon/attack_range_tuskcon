@@ -109,16 +109,6 @@ resource "aws_ec2_traffic_mirror_session" "zeek_windows_dc_session" {
   session_number           = "10${count.index}"
 }
 
-resource "aws_ec2_traffic_mirror_session" "zeek_windows_server_session" {
-  count         = var.config.windows_server_zeek_capture == "1" && var.config.zeek_sensor == "1" ? "${var.config.windows_server}" : 0
-  description              = "Zeek Mirror Session for Windows Server"
-  depends_on = [var.windows_server_instance]
-  traffic_mirror_filter_id = aws_ec2_traffic_mirror_filter.zeek_filter[0].id
-  traffic_mirror_target_id = aws_ec2_traffic_mirror_target.zeek_target[0].id
-  network_interface_id     = var.windows_server_instance[count.index].primary_network_interface_id
-  session_number           = "20${count.index}"
-}
-
 resource "aws_ec2_traffic_mirror_session" "zeek_windows_client_session" {
   count         = var.config.windows_client_zeek_capture == "1" && var.config.zeek_sensor == "1" ? "${var.config.windows_client}" : 0
   description              = "Zeek Mirror Session for Windows Client"
