@@ -5,7 +5,7 @@
 
 ### [Ubuntu](https://github.com/davisshannon/attack_range_tuskcon/)
 
-1. `ssh to 13.236.6.3.  Your username is the just user- and then your number. I'll give you the password.`
+1. `ssh to 13.236.6.3.  Your username is the just user- and then your bingo ball number. I'll give you the password.`
 2. `copy the contents of /tmp/tuskcon.keys to your local host, we'll use this in a bit.`
 3. `create a .ssh directory in your home directory (mkdir .ssh).`
 4. `copy /tmp/tuskcon.cer to your .ssh directory (cp /tmp/tuskcon.cer .ssh/.).`
@@ -15,9 +15,9 @@
 8. `https://www.google.com/search?q=what+is+my+ip`
 9. `cd into attack_range_tuskcon`
 10. `edit attack_range.conf`
-- `range_name- Add your user number to the end of tuskcon-.`
+- `range_name- Add your bingo ball number to the end of tuskcon-.`
 11. `edit users.yml`
-- `change name to be user- and then your number.`
+- `change name to be user- and then your bingo ball number.`
 - `change email to be your email address.`
 - `change ip to be the IP address from number 8.  Make sure to keep the /32 on the end.`
 - `change key to be your public key if you want to SSH to the Splunk and Zeek boxes.`
