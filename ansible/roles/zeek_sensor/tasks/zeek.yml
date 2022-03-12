@@ -1,5 +1,5 @@
 ---
-- name: install /etc/systemd/system/capture-int.service to set ens5 settings at boot
+- name: install /etc/systemd/system/capture-int.service to set ens6 settings at boot
   become: true
   copy:
     src: capture-int.service
@@ -9,7 +9,7 @@
     mode: 0755
     force: yes
 
-- name: install /etc/systemd/system/ethtool.service to set ens5 settings at boot
+- name: install /etc/systemd/system/ethtool.service to set ens6 settings at boot
   become: true
   copy:
     src: ethtool.service
@@ -240,12 +240,12 @@
   shell: 'sudo setcap cap_net_raw=eip /opt/zeek/bin/capstats'
   become: true
 
-- name: Set ens5 mtu
-  shell: 'sudo ifconfig ens5 mtu 9001'
+- name: Set ens6 mtu
+  shell: 'sudo ifconfig ens6 mtu 9001'
   become: true
 
-- name: Set ens5 up
-  shell: 'sudo ifconfig ens5 up'
+- name: Set ens6 up
+  shell: 'sudo ifconfig ens6 up'
   become: true
   
 ####################################################################

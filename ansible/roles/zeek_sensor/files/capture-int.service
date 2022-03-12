@@ -4,12 +4,12 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/sbin/ip link set ens5 promisc on
+ExecStart=/sbin/ip link set ens6 promisc on
 TimeoutStartSec=0
 RemainAfterExit=yes
 
 Type=oneshot
-ExecStart=/usr/sbin/ethtool -G ens5 rx 512
+ExecStart=/usr/sbin/ethtool -G ens6 rx 512
 TimeoutStartSec=0
 RemainAfterExit=yes
 
