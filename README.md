@@ -9,14 +9,15 @@
 2. `copy the contents of /tmp/tuskcon.keys to your local host, we'll use this in a bit.`
 3. `create a .ssh directory in your home directory (mkdir .ssh).`
 4. `copy /tmp/tuskcon.cer to your .ssh directory (cp /tmp/tuskcon.cer .ssh/.).`
-5. `git clone https://raw.githubusercontent.com/davisshannon/attack_range_tuskcon/main/scripts/ubuntu_deploy.sh`
-6. `bash ubuntu_deploy.sh`
-7. `cd into attack_range_tuskcon`
-8. `edit attack_range.conf`
+5. `modify permissions on tuskcon.cer to make it usable (chmod 600 .ssh/tuskcon.cer).`
+6. `git clone https://raw.githubusercontent.com/davisshannon/attack_range_tuskcon/main/scripts/ubuntu_deploy.sh`
+7. `bash ubuntu_deploy.sh`
+8. `cd into attack_range_tuskcon`
+9. `edit attack_range.conf`
 - `range_name- Add your user number to the end of tuskcon-.`
-9. `run aws configure to configure your aws client. The key and private key are what you copied in step 2.  Just use ap-southeast-2 for your region and leave the output format blank.`
-10. `run source venv/bin/activate to enter the virtual environment.`
-11. `run python attack_range.py build to build the range.`
+10. `run aws configure to configure your aws client. The key and private key are what you copied in step 2.  Just use ap-southeast-2 for your region and leave the output format blank.`
+11. `run source venv/bin/activate to enter the virtual environment.`
+12. `run python attack_range.py build to build the range.`
 
 ## Architecture 🏯
 ![Logical Diagram](docs/attack_range_architecture.png)
