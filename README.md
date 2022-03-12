@@ -1,4 +1,4 @@
-# Attack Range TuskCon (1st Annual Ransomware Races)
+# Attack Range TuskCon (Inaugural Ransomware Derby)
 ![Ransomware Races](docs/ransomware-races.jpeg)
 
 ## Installation 🏗
