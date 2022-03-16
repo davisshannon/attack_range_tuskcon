@@ -3,4 +3,4 @@ users:
 - name: "user-X"
   email: "email@domain.com"
   ip: "x.x.x.x/32"
-  key: "paste public key here"
+  key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDDe912H8cn/dtJr7n2gO8UqiUsq8AD+DaNyU51z3bAYKiyUPUdgGJJ56A8f+5lCCD9ESTMJpTHhCm75PM79gT7boGMqQrLXeRRw0swnGm0bsMC66Hnst4LyM6edZfrEzm/08jPXAGDwUEynnzyg6qA8vTf2JLC9diVAuhnT+ffZoayzghR3pSXLUNb8XHc//Aec4VnjpkCD6Zrpqpq59TJ6FIO+DtNvHuDhtmVBL5dkiNt+Pu43QdW2Qna49mGAgkan41QMUyFr9sN8F25r1y6/MZXfDM/KaRH5VFp4wv8nEW0R/t9+kUsr5j+td/l29eWn7/ZqkdyhZpGs1GmAaQ7wxyp8TMoDGd+bmqSt+oknr7xOIXWBJ89X4MaJ9r6pcOmMyWkHk27jV5oVKWVMbaoXWvX9cNrCwt3AnNrvgKdae4yZ0eG8StKOU1R/a1+EjXHrhMHSA/s2Z2vx9epVwBwbcxX/nmA3jviieqWHUrNMu1hkl6WuMepYJ5TWOpMlKE= shannond@shannond-mbp-f451c"
