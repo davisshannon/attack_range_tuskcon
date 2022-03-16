@@ -1,3 +1,5 @@
 ---
+
 - name: Disable Windows Defender
-   ansible.windows.win_shell: Set-MpPreference -DisableRealtimeMonitoring $true
+  win_shell: "Set-MpPreference -DisableRealtimeMonitoring $true"
+  register: result
