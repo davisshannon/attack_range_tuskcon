@@ -52,7 +52,7 @@
 - name: Copy ransomware_iterate script to host
   win_copy:
     src: "ransomware_iterate.ps1"
-    dest: 'C:\ranwomware_iterate.ps1'
+    dest: 'C:\ransomware_iterate.ps1'
     
 - name: Run add users
   win_shell: "C:\\add_users.ps1 {{ item.name }} Administrator@surge.local {{ win_password }}"
