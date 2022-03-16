@@ -10,11 +10,12 @@
     - /opt/splunk/etc/apps/web_app/local/
     - /opt/splunk/etc/apps/web_app/appserver/
     - /opt/splunk/etc/apps/web_app/appserver/static
+    - /opt/splunk/etc/apps/web_app/appserver/static/logincustombg
     
 - name: copy server.conf to splunk server
   copy:
     src: ransomware.png
-    dest: /opt/splunk/etc/apps/web_app/appserver/static/ransomware.png
+    dest: /opt/splunk/etc/apps/web_app/appserver/static/logincustombg/ransomware.png
     owner: splunk
     group: splunk
     
