@@ -11,10 +11,10 @@
 4. `modify permissions on tuskcon.cer to make it usable (chmod 600 .ssh/tuskcon.cer).`
 5. `wget https://raw.githubusercontent.com/davisshannon/attack_range_tuskcon/main/scripts/ubuntu_deploy.sh`
 6. `bash ubuntu_deploy.sh`
-7. `https://www.google.com/search?q=what+is+my+ip`
-8. `cd into attack_range_tuskcon`
-9. `edit attack_range.conf`
+7. `cd into attack_range_tuskcon`
+8. `edit attack_range.conf`
 - `range_name- Add your bingo ball number to the end of tuskcon-.`
+9. `https://www.google.com/search?q=what+is+my+ip`
 10. `edit users.yml`
 - `change name to be user- and then your bingo ball number.`
 - `change email to be your email address.`
