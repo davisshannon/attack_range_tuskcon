@@ -31,7 +31,7 @@ resource "aws_instance" "splunk-server" {
     delete_on_termination = "true"
   }
   tags = {
-    Name = "ar-splunk-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
+    Name = "ar-splunk-${var.config.range_name}-${var.config.key_name}"
   }
 
   provisioner "remote-exec" {
