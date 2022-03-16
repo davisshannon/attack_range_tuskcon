@@ -14,7 +14,7 @@
 7. `cd into attack_range_tuskcon`
 8. `edit attack_range.conf`
 - `range_name- Add your bingo ball number to the end of tuskcon-.`
-9. `https://www.google.com/search?q=what+is+my+ip`
+9. `Browse to https://www.google.com/search?q=what+is+my+ip on your local computer to find your actual IP address`
 10. `edit users.yml`
 - `change name to be user- and then your bingo ball number.`
 - `change email to be your email address.`
@@ -22,8 +22,8 @@
 - `change key to be your public key if you want to SSH to the Splunk and Zeek boxes.`
 11. `copy the contents of /tmp/tuskcon.keys to your local host, we'll use this in a bit.`
 12. `run (aws configure) to configure your aws client. The key and private key are what you copied in step 11.  Just use ap-southeast-2 for your region and leave the output format blank.`
-13. `run source venv/bin/activate to enter the virtual environment.`
-14. `run screen python attack_range.py build to build the range.`
+13. `run (source venv/bin/activate) to enter the virtual environment.`
+14. `run (screen python attack_range.py build) to build the range.`
 
 ## Architecture 🏯
 ![Logical Diagram](docs/attack_range_architecture.png)
