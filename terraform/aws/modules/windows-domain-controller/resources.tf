@@ -31,7 +31,7 @@ resource "aws_instance" "windows_domain_controller" {
     delete_on_termination = "true"
   }
   tags = {
-    Name = "ar-win-dc-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
+    Name = "ar-win-dc-${var.config.range_name}-${var.config.key_name}"
   }
   user_data = <<EOF
 <powershell>
