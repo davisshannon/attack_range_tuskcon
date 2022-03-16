@@ -26,7 +26,7 @@
 - `change email to be your email address.`
 - `change ip to be the IP address from number 8.  Make sure to keep the /32 on the end.`
 - `change key to be your public key if you want to SSH to the Splunk and Zeek boxes.`
-11. `copy the contents of /tmp/tuskcon.keys to your local host, we'll use this in a bit.`
+11. `copy the contents of /tmp/tuskcon.keys to your local host, we'll use these in the next step.`
 - `more /tmp/tuskcon.keys`
 12. `run aws configure to configure your aws client. The key and private key are what you copied in step 11.  Just use ap-southeast-2 for your region and leave the output format blank.`
 - `aws configure`
