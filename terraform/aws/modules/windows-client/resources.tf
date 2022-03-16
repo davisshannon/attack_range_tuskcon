@@ -29,7 +29,7 @@ resource "aws_instance" "windows_client" {
     delete_on_termination = "true"
   }
   tags = {
-    Name = "ar-win-client-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
+    Name = "ar-win-client-${var.config.range_name}-${var.config.key_name}"
   }
 
   provisioner "remote-exec" {
