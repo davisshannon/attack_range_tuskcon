@@ -1,7 +1,2 @@
----
-
-- debug:
-    var: ansible_distribution
-
-- name: Disable Windows Defender
-   win_shell: 'Set-MpPreference -DisableRealtimeMonitoring $true'
+- name: Disable Windows Defender for Windows 10
+   ansible.windows.win_shell: 'Set-MpPreference -DisableRealtimeMonitoring $true'
