@@ -31,7 +31,7 @@ resource "aws_instance" "zeek_sensor" {
     delete_on_termination = "true"
   }
   tags = {
-    Name = "ar-zeek-sensor-${var.config.range_name}-${var.config.key_name}"
+    Name = "ar-zeek-sensor-${var.config.range_name}-${var.config.key_name}-${var.config.range_number}"
   }
 }
 
