@@ -8,15 +8,6 @@
     recurse: yes
   with_items:
     - /opt/splunk/etc/apps/web_app/local/
-
-- name: Create folder directory for web configuration
-  file:
-    path: "{{ item }}"
-    state: directory
-    owner: splunk
-    group: splunk
-    recurse: yes
-  with_items:
     - /opt/splunk/etc/apps/web_app/appserver/
     - /opt/splunk/etc/apps/web_app/appserver/static
     
