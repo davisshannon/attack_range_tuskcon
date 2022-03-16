@@ -13,7 +13,7 @@
 6. `run (bash ubuntu_deploy.sh)`
 7. `run (cd attack_range_tuskcon)`
 8. `edit attack_range.conf`
-- `range_number- Change the 1 to your bingo ball number.`
+- `range_name- Change the X to your bingo ball number.`
 9. `Browse to https://www.google.com/search?q=what+is+my+ip on your local computer to find your actual IP address`
 10. `edit users.yml`
 - `change name to be user- and then your bingo ball number.`
