@@ -15,7 +15,7 @@ data "aws_ami" "windows-client-ami" {
 resource "aws_instance" "windows_client" {
   count         = "${var.config.windows_client}"
   ami           = data.aws_ami.windows-client-ami[count.index].id
-  instance_type          = var.config.instance_type_ec2
+  instance_type          = "m5n.xlarge"
   key_name = var.config.key_name
   subnet_id = var.ec2_subnet_id
   vpc_security_group_ids = [var.vpc_security_group_ids]
@@ -24,8 +24,8 @@ resource "aws_instance" "windows_client" {
   root_block_device {
     volume_type = "gp3"
     volume_size = "300"
-    iops = "16000"
-    throughput = "1000"
+    iops = "3000"
+    throughput = "125"
     delete_on_termination = "true"
   }
   tags = {
