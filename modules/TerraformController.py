@@ -192,7 +192,7 @@ class TerraformController(IEnvironmentController):
 
         # aws cloud provider
         if self.config['provider'] == 'aws':
-            instance = aws_service.get_instance_by_name('ar-splunk-' + self.config['range_name'] + '-' + self.config['key_name'] + '-' + self.config['range_number'], self.config)
+            instance = aws_service.get_instance_by_name('ar-splunk-' + self.config['range_name'] + '-' + self.config['key_name'], self.config)
 
             if instance['State']['Name'] == 'running':
                 instance_ip = instance['NetworkInterfaces'][0]['Association']['PublicIp']
