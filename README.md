@@ -10,7 +10,7 @@
 3. `create a .ssh directory in your home directory (mkdir .ssh).`
 4. `copy /tmp/tuskcon.cer to your .ssh directory (cp /tmp/tuskcon.cer .ssh/.).`
 5. `modify permissions on tuskcon.cer to make it usable (chmod 600 .ssh/tuskcon.cer).`
-6. `git clone https://raw.githubusercontent.com/davisshannon/attack_range_tuskcon/main/scripts/ubuntu_deploy.sh`
+6. `wget https://raw.githubusercontent.com/davisshannon/attack_range_tuskcon/main/scripts/ubuntu_deploy.sh`
 7. `bash ubuntu_deploy.sh`
 8. `https://www.google.com/search?q=what+is+my+ip`
 9. `cd into attack_range_tuskcon`
