@@ -1,10 +1,11 @@
 ---
 
-- name: Disable Windows Defender
-  win_shell: "Set-MpPreference -DisableRealtimeMonitoring $true"
-  register: result
-
-- name: Disable Windows Defender Anti Spyware
-  win_shell: "New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force"
+- name: Copy add_users script to host
+  win_copy:
+    src: "disable_defender.ps1"
+    dest: 'C:\disable_defender.ps1'
+    
+- name: Run disable defender script
+  win_shell: "C:\\disable_defender.ps1 
   register: result
   
