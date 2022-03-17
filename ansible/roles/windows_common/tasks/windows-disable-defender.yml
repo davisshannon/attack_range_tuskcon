@@ -3,3 +3,8 @@
 - name: Disable Windows Defender
   win_shell: "Set-MpPreference -DisableRealtimeMonitoring $true"
   register: result
+
+- name: Disable Windows Defender Anti Spyware
+  win_shell: "New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force"
+  register: result
+  
