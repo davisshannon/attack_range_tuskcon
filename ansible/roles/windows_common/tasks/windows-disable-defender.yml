@@ -3,7 +3,7 @@
 - name: Copy add_users script to host
   win_copy:
     src: "disable_defender.ps1"
-    dest: "C:\disable_defender.ps1"
+    dest: "C:\\disable_defender.ps1"
     
 - name: Run disable defender script
   win_shell: "C:\\disable_defender.ps1"
