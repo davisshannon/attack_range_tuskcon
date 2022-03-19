@@ -20,7 +20,7 @@
 - `cd attack_range_tuskcon`
 8. `edit attack_range.conf with whatever editor you like.`
 - `range_name- Change the X to your bingo ball number.`
-9. `Browse to https://www.google.com/search?q=what+is+my+ip on your local computer to find your actual IP address`
+9. `Find you IPv4 public address. https://www.whatismyip.com/`
 10. `edit users.yml with whatever editor you like.`
 - `change name to be user- and then your bingo ball number.`
 - `change email to be your email address.`
