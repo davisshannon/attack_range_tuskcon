@@ -32,8 +32,9 @@
 - `aws configure`
 13. `activate the virtual environment for your build process.`
 - `source venv/bin/activate`
-14. `build your range using screen in case your SSH session dies.`
+14. `build your range using screen or tmux in case your SSH session dies.`
 - `screen python attack_range.py build`
+- `tmux python attack_range.py build`
 15. `after your build completes, show your environment details.`
 - `python attack_range.py show`
 
